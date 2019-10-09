@@ -9,4 +9,31 @@ router.get('/', async(req,res) =>{
     });
 });
 
+// About page
+router.get('/about', async(req,res) =>{
+    return res.render("../views/home",{
+        'base': req.headers.host
+    });
+});
+
+// Explore Campus page
+router.get('/campus', async(req,res) =>{
+    return res.render("../views/home",{
+        'base': req.headers.host
+    });
+});
+
+// Blog Page
+router.get('/blogs', async(req,res) =>{
+    return res.render("../views/blogs",{
+        'base': req.headers.host
+    });
+});
+
+// Team page
+router.get('/team', async(req,res) =>{
+    return res.render("../views/home",{
+        'base': req.headers.host
+    });
+});
 module.exports = router;
