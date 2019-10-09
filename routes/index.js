@@ -23,6 +23,20 @@ router.get('/campus', async(req,res) =>{
     });
 });
 
+// Events page
+router.get('/events', async(req,res) =>{
+    return res.render("../views/home",{
+        'base': req.headers.host
+    });
+});
+
+// College Updates page
+router.get('/updates', async(req,res) =>{
+    return res.render("../views/home",{
+        'base': req.headers.host
+    });
+});
+
 // Blog Page
 router.get('/blogs', async(req,res) =>{
     return res.render("../views/blogs",{
