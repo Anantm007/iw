@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="Sumon Rahman">
-    <meta name="description" content="">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Anant Mathur">
+    <meta name="description" content="MSI-T Unfiltered | A place where MSI and MSIT comes together for a worthy experience.
+     There is no attendance issue here!">
+    <meta name="keywords" content="MSIT, inception, wave, MSI, surajmal, maharaja surajmal">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
@@ -19,7 +20,11 @@
     <link rel="stylesheet" href="css/linearicons.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
     <link rel="stylesheet" href="css/animate.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Main-Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -37,8 +42,8 @@
     <!-- Home-Area -->
     <header class="home-area overlay" id="home_page">
             <div class="container">
-               <h1 style="text-align: center">MSI-T Unfiltered</h1>
-               <h4 style="text-align: center">A place where MSI and MSIT comes together for a worthy experience. <br>
+               <h1 style="text-align: center; font-size: 4rem;">MSI-T Unfiltered</h1>
+               <h4 style="text-align: center;">A place where MSI and MSIT comes together for a worthy experience. <br>
                     ✨Welcome to our page, there's no attendance issue here.✨</h4><br>
                     <br>
                     <div class="row">
@@ -275,6 +280,29 @@
                 </div>
             </div>
         </div>
+        <br><br>
+        <!-- Trigger the modal with a button -->
+        <div align="center">
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" 
+            data-target="#myModal" style="text-align: center; background:#3c4245" >...</button>
+        </div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" >
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body"><br><br>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-twitter"></a>
+      </div>
+      </div>
+
+  </div>
+</div>
     </div>
     <!-- Contact Area End -->
 
@@ -293,8 +321,9 @@
     <script src="js/main.js"></script>
 </body>
 
-<footer>
-    <% include ./includes/footer.ejs %>
+
+  <footer>
+      <% include ./includes/footer.ejs %>
 </footer>
 
 </html>
