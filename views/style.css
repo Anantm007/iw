@@ -107,11 +107,12 @@ body {
 }
 
 .fa {
-    margin: 2rem;
+    margin-top: 1rem;
+    margin-left: 20rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-size: 30px;
-    width: 50px;
+    width: 40px;
     text-align: center;
     text-decoration: none;
   }
@@ -122,6 +123,33 @@ body {
   }
   
   /* Set a specific color for each brand */
+  /* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    left: -14%;
+    }
+  
+  /* Style the icon bar links */
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: white;
+  }
+  
+  /* Style the social media icons with color, if you want */
+  
+  .facebook {
+    color: white;
+  }
+  
+  .instagram {
+    color: white;
+  }
+  .linkedin {
+    color: white;
+  }
   
   /* Facebook */
   .fa-facebook {
