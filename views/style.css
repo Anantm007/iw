@@ -175,6 +175,9 @@ body {
     color: white;
   }
   
+  .email {
+    color: black;
+  }
   /* Facebook */
   .fa-facebook {
     background: #3B5998;
