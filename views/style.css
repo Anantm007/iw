@@ -117,6 +117,12 @@ body {
     text-decoration: none;
   }
   
+  @media screen and (min-width: 600px) {
+  .mymodal {
+        visibility: hidden;
+  }
+}
+
   /* Add a hover effect if you want */
   .fa:hover {
     opacity: 0.7;
@@ -129,7 +135,25 @@ body {
     top: 50%;
     left: -12%;
     }
-  
+
+@media screen and (max-width: 600px) {
+
+    .icon-bar {
+            position: fixed;
+            top: 50%;
+            left: -12%;
+            visibility: hidden;
+            }   
+            .icon-bar a {
+                display: block;
+                text-align: center;
+                transition: all 0.3s ease;
+                color: white;
+                visibility: hidden;
+              }
+              
+      }
+
   /* Style the icon bar links */
   .icon-bar a {
     display: block;
