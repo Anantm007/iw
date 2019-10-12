@@ -143,6 +143,20 @@
   display: block;
 }
 
+
+@media only screen and (max-width: 767px) {
+    .owl-next {
+      margin-bottom: 0%;
+      visibility: hidden;
+    }
+    
+    .owl-prev {
+      
+      margin-bottom: 0%;
+      visibility: hidden;
+    }
+  }
+
 /*
  * 	Owl Carousel - Lazy Load Plugin
  */
