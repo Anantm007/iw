@@ -116,6 +116,17 @@ body {
     text-align: center;
     text-decoration: none;
   }
+
+  /* Button to open social modal */
+  .modalbutton
+  {
+    border:none;
+    background: #505bda; 
+    border-radius: 100%; 
+    font-size: 2.3rem; 
+    float:right;
+    position: sticky;
+  }
   
   @media screen and (min-width: 600px) {
   .mymodal {
