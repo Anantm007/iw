@@ -1,5 +1,6 @@
 const express =  require('express');
 const router = express();
+const Blogs = require('../models/blog.js');
 
 
 // Home page
@@ -23,8 +24,19 @@ router.get('/updates', async(req,res) =>{
 });
 
 // Blog Page
-router.get('/blogs', async(req,res) =>{
-    return res.render("../views/pages/blogs");
+router.get('/blogs', async(req,res) => {
+
+    try {
+     
+         const blogs = Blogs.find().sort({date: -1});
+
+        res.render('../views/pages/blogs', {
+        'blogs': blogs
+    });   
+    } catch (err) {
+        res.send(err);
+    }
+
 });
 
 // Team page

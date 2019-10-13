@@ -27,7 +27,7 @@ app.use(express.static("views"));
 
 // routes
 app.use('/', require('./routes/index'));
-app.use('/blog', require('./routes/blogs'));
+app.use('/blogs', require('./routes/blogs'));
 
 // Starting the server
 app.listen(process.env.PORT || 3000, ()=>{

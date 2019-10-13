@@ -12,7 +12,7 @@ const BlogSchema = new Schema ({
         required: true
     },
 
-    photo: {
+    image: {
         data: Buffer,
         contentType: String
     },
