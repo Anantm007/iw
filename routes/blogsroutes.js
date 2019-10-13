@@ -2,6 +2,8 @@ const express =  require('express');
 const router = express();
 const Blogs = require('../models/blog.js');
 var multer = require('multer');
+const fs = require("fs");
+
 
 const multerConf = {
   storage: multer.diskStorage({
@@ -51,25 +53,21 @@ var upload = multer({storage: storage});
 router.post('/', multer(multerConf).single("photo"), async(req, res) => {
 
   const {title, body, image} = req.body;
-
   try {
     
     blog = new Blogs({
       title,
       body, 
       image,
-      date
+      date: Date.now()
     })
 
-    console.log(blog);
-
-    blog.photo.data = fs.readFileSync(req.file.path);
-    blog.photo.contentType = "image/png";
-
-    console.log(product.photo);
+ 
+    blog.image.data = fs.readFileSync(req.file.path);
+    blog.image.contentType = "image/png";
 
 // Saving product to the Database
-    await product.save();
+    await blog.save();
 
     res.send(blog);
 
