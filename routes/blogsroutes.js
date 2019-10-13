@@ -75,8 +75,7 @@ router.post('/', multer(multerConf).single("photo"), async(req, res) => {
     // Set up image for storage
     blog.image.data = fs.readFileSync(req.file.path);
     blog.image.contentType = "image/png";
-
-    console.log(blog.image);
+    
     // Saving blog to the Database
     await blog.save();
 
