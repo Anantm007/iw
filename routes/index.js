@@ -1,5 +1,9 @@
+// File for all the basic home routes
+
 const express =  require('express');
 const router = express();
+
+// Blogs model
 const Blogs = require('../models/blog.js');
 
 
@@ -28,10 +32,10 @@ router.get('/blogs', async(req,res) => {
 
     try {
      
-         const blogs = Blogs.find().sort({date: -1});
+         const blogs = await Blogs.find().sort({date: -1});
 
         res.render('../views/pages/blogs', {
-        'blogs': blogs
+        'Blogs': blogs
     });   
     } catch (err) {
         res.send(err);

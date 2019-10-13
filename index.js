@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Setting express engine
 app.set('view engine', 'ejs');
 app.use(express.static("views"));
+app.use(express.static("public"));
 
 // routes
 app.use('/', require('./routes/index'));

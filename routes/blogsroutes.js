@@ -1,10 +1,16 @@
+// File for CRUD operations on blogs
+
 const express =  require('express');
 const router = express();
+
+// Blog model
 const Blogs = require('../models/blog.js');
+
+// multer and fs for file upload
 var multer = require('multer');
 const fs = require("fs");
 
-
+// Multer Configuration
 const multerConf = {
   storage: multer.diskStorage({
     destination: function(req, file, next)
@@ -39,6 +45,7 @@ const multerConf = {
   }
 };
 
+// Image storage in public folder
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, 'public/images')
@@ -50,11 +57,14 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage});
 
 
+// Uploading posts with image
 router.post('/', multer(multerConf).single("photo"), async(req, res) => {
 
   const {title, body, image} = req.body;
+  
   try {
     
+    // Create a new blog object
     blog = new Blogs({
       title,
       body, 
@@ -62,11 +72,12 @@ router.post('/', multer(multerConf).single("photo"), async(req, res) => {
       date: Date.now()
     })
 
- 
+    // Set up image for storage
     blog.image.data = fs.readFileSync(req.file.path);
     blog.image.contentType = "image/png";
 
-// Saving product to the Database
+    console.log(blog.image);
+    // Saving blog to the Database
     await blog.save();
 
     res.send(blog);

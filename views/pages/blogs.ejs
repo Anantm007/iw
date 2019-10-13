@@ -9,7 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
-    <title>MSI-T Unfiltered</title>
+    <title>Blogs | MSI-T Unfiltered</title>
     <!-- Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h1 class="white-color">Out Latest Blog</h1>
+                    <h1 class="white-color">Our Latest Blog</h1>
                 </div>
             </div>
         </div>
@@ -76,92 +76,23 @@
             <!--Highlighted Blog Area-->
             
             <div class="row">
+                <% Blogs.forEach( function (blog) { %>
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <article class="post-single">
                         <figure class="post-media">
-                            <img src="images/blog-1.jpg" alt="">
+                            <img src= "<%= blog.image %>" alt="blog_img">
                         </figure>
                         <div class="post-body">
                             <div class="post-meta">
-                                <div class="post-date">01.02.2017</div>
+                                <div class="post-date"><%= blog.date %></div>
                             </div>
-                            <h4 class="dark-color"><a href="single.html">IOS 10: 8 Things we want froma pple iPhone8S</a></h4>
+                            <h4 class="dark-color"><a href="single.html"><%= blog.title %></a></h4>
+                            <p class="dark-color"><a href="single.html"><%= blog.body.substring(0,100)  %> ...</a></p>
                             <a href="single.html" class="read-more">View Article</a>
                         </div>
                     </article>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <article class="post-single">
-                        <figure class="post-media">
-                            <img src="images/blog-2.jpg" alt="">
-                        </figure>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                <div class="post-date">01.02.2017</div>
-                            </div>
-                            <h4 class="dark-color"><a href="single.html">Top destinations to escape from reality</a></h4>
-                            <a href="single.html" class="read-more">View Article</a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <article class="post-single">
-                        <figure class="post-media">
-                            <img src="images/blog-3.jpg" alt="">
-                        </figure>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                <div class="post-date">01.02.2017</div>
-                            </div>
-                            <h4 class="dark-color"><a href="single.html">Five ways to wear a shirt by Victoria Beckha</a></h4>
-                            <a href="single.html" class="read-more">View Article</a>
-                        </div>
-                    </article>
-                </div>
-                <!--
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <article class="post-single">
-                        <figure class="post-media">
-                            <img src="images/blog-4.jpg" alt="">
-                        </figure>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                <div class="post-date">01.02.2017</div>
-                            </div>
-                            <h4 class="dark-color"><a href="single.html">Use this exercise to solve any Product Design Challenge</a></h4>
-                            <a href="single.html" class="read-more">View Article</a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <article class="post-single">
-                        <figure class="post-media">
-                            <img src="images/blog-5.jpg" alt="">
-                        </figure>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                <div class="post-date">01.02.2017</div>
-                            </div>
-                            <h4 class="dark-color"><a href="single.html">20 non-political reasons why Brexit is shit</a></h4>
-                            <a href="single.html" class="read-more">View Article</a>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <article class="post-single">
-                        <figure class="post-media">
-                            <img src="images/blog-6.jpg" alt="">
-                        </figure>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                <div class="post-tags"><a href="#">People</a></div>
-                                <div class="post-date">01.02.2017</div>
-                            </div>
-                            <h4 class="dark-color"><a href="single.html">Athleisure: What do Swedish people wear?</a></h4>
-                            <a href="single.html" class="read-more">View Article</a>
-                        </div>
-                    </article>
-                </div>-->
+                <% }); %>
             </div>
         </div>
     </div>
