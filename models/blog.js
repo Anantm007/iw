@@ -13,7 +13,7 @@ const BlogSchema = new Schema ({
     },
 
     image: {
-        id: String,
+        name: String,
         data: Buffer,
         contentType: String
     },
