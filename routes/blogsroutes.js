@@ -8,74 +8,78 @@ const Blogs = require('../models/blog.js');
 
 // multer and fs for file upload
 var multer = require('multer');
-const fs = require("fs");
+const fs = require('fs');
 
-// Multer Configuration
-const multerConf = {
-  storage: multer.diskStorage({
-    destination: function(req, file, next)
-    {
-      next(null,"./public/images");
-    },
-
-    filename: function(req, file, next)
-    {
-      const ext = file.mimetype.split("/")[1];
-      next(null, file.fieldname + '-' + Date.now()+ "." + ext);
-    }
-  }),
-
-  fileFilter: function(req, file, next)
-  {
-    if(!file)
-    {
-      next();
-    }
-
-    const image = file.mimetype.startsWith("image/");
-
-    if(image)
-    {
-      next(null, true);
-    }
-    else
-    {
-      next({message: "File type not supported"}, false);
-    }
-  }
-};
-
-// Image storage in public folder
+// Set multer storage
 var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'public/images')
-    },
-    filename: (req, file, cb) => {
-      cb(null, file.filename)
-    }
+  destination: function (req, file, cb) {
+    cb(null, 'public/images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+ 
+var upload = multer({ storage: storage });
+
+
+// Get all blogs
+router.get('/', async(req,res) => {
+
+  try {
+   
+       const blogs = await Blogs.find().sort({date: -1});
+
+      res.render('../views/pages/blogs', {
+      'Blogs': blogs
+  });   
+  } catch (err) {
+      res.send(err);
+  }
+
 });
-var upload = multer({storage: storage});
 
 
-// Uploading posts with image
-router.post('/', multer(multerConf).single("photo"), async(req, res) => {
+// Get a specific blog
+router.get('/:id', async(req,res) => {
 
-  const {title, body, image} = req.body;
+  try {
+   
+       const blog = await Blogs.find({'_id': req.params.id});
+      
+      res.render('../views/pages/blogs', {
+      'Blogs': blog
+  });   
+  } catch (err) {
+      res.send(err);
+  }
+
+});
+
+// Create new blog posts along with image
+router.post('/', upload.single("image"), async(req, res) => {
+
+  const {title, body} = req.body;
   
+  var img = fs.readFileSync(req.file.path);
+  var encode_image = img.toString('base64');
+  
+  // Define a JSONobject for the image attributes for saving to database
+  var finalImg = {
+        contentType: req.file.mimetype,
+        data:  new Buffer.from(encode_image,'base64')
+    };
+
   try {
     
     // Create a new blog object
     blog = new Blogs({
       title,
       body, 
-      image,
+      image: finalImg,
       date: Date.now()
     })
 
-    // Set up image for storage
-    blog.image.data = fs.readFileSync(req.file.path);
-    blog.image.contentType = "image/png";
-    
     // Saving blog to the Database
     await blog.save();
 
@@ -88,5 +92,18 @@ router.post('/', multer(multerConf).single("photo"), async(req, res) => {
 
 });
 
+// Displaying a specific image with blog id passed as a parameter
+router.get('/photo/:id', (req, res) => {
+  var filename = req.params.id;
+  
+  Blogs.findOne({'_id': filename }, (err, result) => {
+  
+      if (err) return console.log(err)
+   
+     res.contentType('image/jpeg');
+     res.send(result.image.data);     
+      
+    })
+  })
 
 module.exports = router;
