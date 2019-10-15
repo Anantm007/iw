@@ -1,3 +1,6 @@
 {
-    "mongoURI": "mongodb+srv://admin:admin@iwmsit-vrngm.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://admin:admin@iwmsit-vrngm.mongodb.net/test?retryWrites=true&w=majority",
+    "EmailId": "iwmsit@gmail.com",
+    "EmailPass": "qwe123ewq321",
+    "EmailName": "MSI-T Unfiltered"
 }

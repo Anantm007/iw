@@ -3,10 +3,6 @@
 const express =  require('express');
 const router = express();
 
-// Blogs model
-const Blogs = require('../models/blog.js');
-
-
 // Home page
 router.get('/', async(req,res) =>{
     return res.render("../views/pages/home");
