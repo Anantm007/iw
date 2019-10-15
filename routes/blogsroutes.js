@@ -43,15 +43,13 @@ router.get('/', async(req,res) => {
 // Get a specific blog
 router.get('/:id', async(req,res) => {
 
-  console.log(req.params.id);
-
   try {
    
        const blog = await Blogs.find({'_id': req.params.id});
-
-        res.render('../views/pages/singleblog', {
-        'Blog': blog
-  });   
+        
+      res.render('../views/pages/singleblog', {
+        'Blogs': blog
+    });   
   } catch (err) {
       res.send(err);
   }
