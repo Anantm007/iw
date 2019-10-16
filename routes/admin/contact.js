@@ -17,7 +17,7 @@ let transporter = nodemailer.createTransport({
     }});
 
 // Query model
-const Query = require('../models/query.js');
+const Query = require('../../models/query.js');
 
 // Post route to submit
 router.post('/submitquery', async(req, res) => {

@@ -4,7 +4,7 @@ const express =  require('express');
 const router = express();
 
 // Blog model
-const Blogs = require('../models/blog.js');
+const Blogs = require('../../models/blog.js');
 
 // multer and fs for file upload
 var multer = require('multer');
