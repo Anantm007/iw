@@ -216,6 +216,14 @@ body {
     background: #0077B5;
     color: white;
   }
+
+  .fa-whatsapp  {
+    color:#fff;
+    background:
+    linear-gradient(#25d366,#25d366)10px 84%/10px 15px no-repeat,
+    radial-gradient(#25d366 60%,transparent 0);
+  }
+
 /* Remove Chrome Input Field's Unwanted Yellow Background Color */
 
 input:-webkit-autofill,
