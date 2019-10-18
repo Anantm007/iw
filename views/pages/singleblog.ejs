@@ -56,98 +56,60 @@
                     <article class="post-single">
                               
                     <div class="post-body">
-                            <% Blogs.forEach( function (blog) { %>
                       
                             <figure class="post-media">
-                                <img src= "/blogs/photo/<%= blog.id %>" alt="blog_img" style="height:50rem; width: 70rem">
+                                <img src= "/blogs/photo/<%= Blog.id %>" alt="blog_img" style="height:50rem; width: 70rem;">
                             </figure>
-            
-                            <h2 class="dark-color"><%=blog.title %></h2>
+                            <br>
+                            <h2 class="dark-color" style="text-align: center;"><%=Blog.title %></h2>
                             <div class="space-20"></div>
                             <div class="space-50"></div>
-                            <p><%= blog.body %></p>
-                                    <% }); %>
+                            <p><%= Blog.body %></p>
+                                    
                         </div>
                     </article>
                     <div class="space-100"></div>
                     <div id="comments" class="comments-area">
-                        <h3 class="comment-heading">2 Comments</h3>
-                        <ul class="comments-list">
+                        <h3 class="comment-heading">Comments</h3>
+                        <ul class="comments-list">                  
+                            <% Blog.comments.forEach(function (comment) { %>          
                             <li>
                                 <article class="comment">
                                     <figure class="comment-pic">
-                                        <img alt="" src="images/comment-image.jpeg">
+                                            <img alt="" src="https://image.flaticon.com/icons/svg/25/25663.svg" 
+                                            style="height: 3rem;">
                                     </figure>
                                     <div class="comment-content">
                                         <div class="comment-header">
-                                            <h4>Ashekur Rahman</h4>
-                                            <p class="comment-date">Posted on September 3, 2012 at 10:18 am </p>
+                                            <h4><%=comment.name %></h4>
+                                            <p class="comment-date">Posted on <%= comment.date.getDate() %> / <%= comment.date.getMonth() + 1 %> / <%= comment.date.getFullYear() %> </p>
                                         </div>
-                                        <p>Do sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni est, qui d tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                                        <ul class="breadcrumb">
-                                            <li><a href="#">Reply</a></li>
-                                            <li><a href="#">Share</a></li>
-                                        </ul>
+                                        <p><%=comment.text %></p>
+                                        
                                     </div>
                                 </article>
-                                <ul>
-                                    <li>
-                                        <article class="comment">
-                                            <figure class="comment-pic">
-                                                <img alt="" src="images/comment-image.jpeg">
-                                            </figure>
-                                            <div class="comment-content">
-                                                <div class="comment-header">
-                                                    <h4>Ashekur Rahman</h4>
-                                                    <p class="comment-date">Posted on September 3, 2012 at 10:18 am </p>
-                                                </div>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos pariatur fuga ullam placeat corrupti inventore.</p>
-                                                <ul class="breadcrumb">
-                                                    <li><a href="#">Reply</a></li>
-                                                    <li><a href="#">Share</a></li>
-                                                </ul>
-                                            </div>
-                                        </article>
-                                    </li>
-                                </ul>
+                                
                             </li>
-                            <li>
-                                <article class="comment">
-                                    <figure class="comment-pic">
-                                        <img alt="" src="images/comment-image.jpeg">
-                                    </figure>
-                                    <div class="comment-content">
-                                        <div class="comment-header">
-                                            <h4>Ashekur Rahman</h4>
-                                            <p class="comment-date">Posted on September 3, 2012 at 10:18 am </p>
-                                        </div>
-                                        <p>Do sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni est, qui d tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                                        <ul class="breadcrumb">
-                                            <li><a href="#">Reply</a></li>
-                                            <li><a href="#">Share</a></li>
-                                        </ul>
-                                    </div>
-                                </article>
-                            </li>
+                            <% }); %>
                         </ul>
+                        <br><br>
                         <div class="comment-respond">
-                            <h4>Post your comments</h4>
-                            <form action="#" class="comment-form">
+                            <h4>Post your Comments</h4>
+                            <form action="/blogs/comment/<%=Blog.id %>" method="POST" class="comment-form">
                                 <div class="form-double">
                                     <div class="box">
-                                        <input type="text" class="form-control" placeholder="your Name">
+                                        <input type="text" name="name" class="form-control" placeholder="Name...">
                                         <div class="space-30"></div>
                                     </div>
-                                    <div class="box last">
-                                        <input type="email" class="form-control" placeholder="Your Email">
-                                        <div class="space-30"></div>
-                                    </div>
+                                </div><br><br>
+                                
+                                <textarea id="comment" name="text" rows="5" class="form-control" placeholder="Type Your Mesage..."></textarea>
+                                
+                                <div class="space-30"></div>
+                                <div style="text-align:center">
+                                <button type="submit" class="btn btn-primary">POST</button>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Website URL">
-                                <div class="space-30"></div>
-                                <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="Type Your Mesage..."></textarea>
-                                <div class="space-30"></div>
-                                <button type="submit" class="bttn-default">Post Comments</button>
+                            
                             </form>
                         </div>
                     </div>

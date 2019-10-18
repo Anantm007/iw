@@ -52,10 +52,10 @@ router.get('/:id', async(req,res) => {
 
   try {
    
-       const blog = await Blogs.find({'_id': req.params.id});
+       const blog = await Blogs.findOne({'_id': req.params.id});
         
       res.render('../views/pages/singleblog', {
-        'Blogs': blog
+        'Blog': blog
     });   
   } catch (err) {
       res.send(err);
@@ -89,8 +89,10 @@ router.post('/', upload.single("image"), async(req, res) => {
 
     // Saving blog to the Database
     await blog.save();
-
-    res.send(blog);
+  
+    res.render('../views/pages/singleblog', {
+      'Blog': blog
+  });
 
   } catch (err) {
     console.log(err.message);
@@ -121,9 +123,11 @@ router.post('/comment/:id', async(req, res) => {
 
     // Saving blog to the Database
     await blog.save();
-
-    res.send(blog.comments);
-
+    
+    res.render('../views/pages/singleblog', {
+      'Blog': blog
+  });
+  
   } catch (err) {
     console.log(err.message);
     res.status(500).send("server error");
