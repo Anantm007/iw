@@ -17,6 +17,24 @@ const BlogSchema = new Schema ({
         contentType: String
     },
 
+    comments: [
+        {
+          name: {
+            type: String,
+            required: true
+          },
+
+          text: {
+            type: String,
+            required: true
+          },
+          date: {
+            type: Date,
+            default: Date.now
+          }
+        }
+      ],
+
     date: {
         type: Date,
         default: Date.now(),

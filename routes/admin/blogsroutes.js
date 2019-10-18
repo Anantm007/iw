@@ -2,6 +2,13 @@
 
 const express =  require('express');
 const router = express();
+var bodyParser = require('body-parser')
+
+// parse application/x-www-form-urlencoded
+router.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+router.use(bodyParser.json())
 
 // Blog model
 const Blogs = require('../../models/blog.js');
@@ -91,6 +98,39 @@ router.post('/', upload.single("image"), async(req, res) => {
   }
 
 });
+
+// Create new comment
+router.post('/comment/:id', async(req, res) => {
+
+  const {name, text} = req.body;  
+
+  try {
+    
+    const blog = await Blogs.findOne({'_id':req.params.id});
+
+    // Create a new comment object
+    const newComment = ({
+      name,
+      text,
+      date: Date.now()
+    });
+
+
+    blog.comments.unshift(newComment);
+
+
+    // Saving blog to the Database
+    await blog.save();
+
+    res.send(blog.comments);
+
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send("server error");
+  }
+
+});
+
 
 // Displaying a specific image with blog id passed as a parameter
 router.get('/photo/:id', (req, res) => {
