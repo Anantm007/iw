@@ -34,11 +34,19 @@ var upload = multer({ storage: storage });
 router.get('/', async(req,res) => {
 
   try {
-   
+    
+       // Fetch all blogs to get total number of blogs
        const blogs = await Blogs.find().sort({date: -1});
 
+       // Fetch the latest blog sorted by date
+       const latest = await Blogs.findOne({}, {}, {sort: {'date': -1}});
+
+       // Fetch all blogs except the latest one
+       blogs2 = await Blogs.find().limit(blogs.length-1);
+
       res.render('../views/pages/blogs', {
-      'Blogs': blogs
+      'Blogs': blogs2,
+      'latest': latest
   });   
   } catch (err) {
       res.send(err);
