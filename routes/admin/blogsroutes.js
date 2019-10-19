@@ -40,7 +40,7 @@ router.get('/', async(req,res) => {
 
        // Fetch the latest blog sorted by date
        const latest = await Blogs.findOne({}, {}, {sort: {'date': -1}});
-
+       
        // Fetch all blogs except the latest one
        blogs2 = await Blogs.find().limit(blogs.length-1);
 
