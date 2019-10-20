@@ -31,16 +31,20 @@
 
 <body>
     <div style="text-align: center;">
-        <h1>Welcome to Admin Dashboard</h1>
+        <h1>Resolve Queries</h1>
         
     </div>
-
+        <% Queries.forEach(function (query) { %>
     <ul>
-        <li><h4>See and resolve student queries</h4></li>
-        <li><h4>Create Blogs</h4></li>
-        <li><h4>Edit Blogs</h4></li>
-        <li><h4>Delete Blogs</h4></li>
+        <h2>• <%= query.name %></h2>
+        <h3><%= query.message %></h3>
+        <h4><a href="https://api.whatsapp.com/send?phone=91<%=query.phone%>&text=Hello">Whatsapp - <%= query.phone %></a></h4>
+
     </ul>
+    <br>
+    <br>
+
+    <% }); %>
 </body>
 
 </html>

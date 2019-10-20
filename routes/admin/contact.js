@@ -2,6 +2,7 @@
 
 const express =  require('express');
 const router = express();
+var sess;
 
 // For sending emails
 const config = require('config');
@@ -51,6 +52,28 @@ router.post('/submitquery', async(req, res) => {
   
       res.redirect("/");
    });
+
+// Get all queries in admin dashboard
+router.get('/admin/queries', async(req ,res) => {
+    sess = req.session;
+    if(req.session.email)
+    {
+        try {
+            const queries = await Query.find().sort({'date': -1});
+
+            res.render('../views/pagesadmin/query', {
+                'Queries': queries
+            });
+
+        } catch (err) {
+            throw(err);
+        }
+    }
+
+    else
+    res.redirect('/admin');
+});
+
 
 module.exports = router;
 
