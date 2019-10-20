@@ -3,6 +3,7 @@
 const express =  require('express');
 const router = express();
 var bodyParser = require('body-parser')
+var sess;
 
 // parse application/x-www-form-urlencoded
 router.use(bodyParser.urlencoded({ extended: false }))
@@ -31,75 +32,125 @@ var upload = multer({ storage: storage });
 
 
 // Create new blog posts along with image
-router.post('/', upload.single("image"), async(req, res) => {
+router.post('/compose', upload.single("image"), async(req, res) => {
 
-  const {title, body} = req.body;
-  
-  var img = fs.readFileSync(req.file.path);
-  var encode_image = img.toString('base64');
-  
-  // Define a JSONobject for the image attributes for saving to database
-  var finalImg = {
-        contentType: req.file.mimetype,
-        data:  new Buffer.from(encode_image,'base64')
-    };
+  sess = req.session;
 
-  try {
+  if(sess.email)
+  {
+    const {title, body} = req.body;
+  
+    var img = fs.readFileSync(req.file.path);
+    var encode_image = img.toString('base64');
     
-    // Create a new blog object
-    blog = new Blogs({
-      title,
-      body, 
-      image: finalImg,
-      date: Date.now()
-    })
-
-    // Saving blog to the Database
-    await blog.save();
+    // Define a JSONobject for the image attributes for saving to database
+    var finalImg = {
+          contentType: req.file.mimetype,
+          data:  new Buffer.from(encode_image,'base64')
+      };
   
-    res.render('../views/pages/singleblog', {
-      'Blog': blog
-  });
-
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send("server error");
+    try {
+      
+      // Create a new blog object
+      blog = new Blogs({
+        title,
+        body, 
+        image: finalImg,
+        date: Date.now()
+      })
+  
+      // Saving blog to the Database
+      await blog.save();
+    
+      res.render('../views/pages/singleblog', {
+        'Blog': blog
+    });
+  
+    } catch (err) {
+      console.log(err.message);
+      res.status(500).send("server error");
+    }
+  
   }
 
+  else
+  res.redirect('/admin');
 });
 
 // Get all blogs
-router.get('/blogs', async(req,res) => {
+router.get('/', async(req,res) => {
 
-  try {
-    
-       const blogs = await Blogs.find().sort({date: -1});
+  sess = req.session;
+  if(sess.email)
+  {
+    try {
+      const blogs = await Blogs.find().sort({date: -1});
 
       res.render('../views/pagesadmin/blogs', {
       'Blogs': blogs
-  });   
-  } catch (err) {
+   });   
+    } catch (err) {
       res.send(err);
+    }
   }
 
+  else
+  res.redirect('/admin');
 });
 
+// Display blog to be edited
+router.get('/edit/:id', async(req, res) => {
+  //sess = req.session;
 
-// Get a specific blog
-router.get('/blogs/:id', async(req,res) => {
+  //if(sess.email) {
+    try {
+      const blog = await Blogs.findById(req.params.id);
+      console.log(blog)
 
-  try {
-   
-       const blog = await Blogs.findOne({'_id': req.params.id});
-        
-      res.render('../views/pagesadmin/singleblog', {
+      res.render('../views/pagesadmin/editblog', {
         'Blog': blog
-    });   
-  } catch (err) {
-      res.send(err);
+      });
+    } catch (err) {
+      throw(err);
+    }
+  //}
+
+  //else
+  res.redirect('/admin');
+})
+
+// Edit A Blog
+router.post('/edit/:id', async(req, res) => {
+  //sess = req.session;
+
+  //if(sess.email) {
+    console.log(req.body);
+    const blog = await Blogs.findByIdAndUpdate({'_id': req.params.id});
+
+    res.redirect('/admin/blogs')
+  //}
+
+  //else
+  res.redirect('/admin');
+})
+
+
+// Delete A Blog, the method is GET to make requests from frontend
+router.get('/delete/:id', async(req, res) => {
+  sess = req.session;
+
+  if(sess.email)
+  {
+    const blog = await Blogs.findOneAndDelete({'_id': req.params.id});
+
+    res.redirect('/admin/blogs')
   }
 
-});
+  else
+  res.redirect('/admin');
+})
+
+
 
 // Displaying a specific image with blog id passed as a parameter
 router.get('/photo/:id', (req, res) => {

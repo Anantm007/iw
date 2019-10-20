@@ -31,21 +31,21 @@
 
 <body>
     <div style="text-align: center;">
-        <h1>All Blogs</h1>
+        <h1>Edit Blog</h1>
         <br>
         
-    </div>
-        <% Blogs.forEach(function (blog) { %>
-    <ul>
-        <h4>• <%= blog.title %></h4>
-        <h5><%= blog.body.substring(0,120) %> ...</h5>
-        <a href="/blogs/<%=blog.id%>"><button class="btn btn-primary">View</button></a>
-        <a href="/admin/blogs/edit/<%=blog.id%>"><button class="btn btn-primary">Edit</button></a>
-        <a href="/admin/blogs/delete/<%=blog.id%>"><button class="btn btn-danger">DELETE</button></a>
-    </ul>
-    <br>
-    <br>
-    <% }); %>
+        <form action="admin/blogs/edit/<%=Blog.id%>", method="POST">
+            <div class="form-group">
+                    First name: <input type="text" name="title" value="John"><br>
+                    Last name: <input type="text" name="body" value="Doe"><br>
+            
+            <div class="checkbox">
+             <label><input type="checkbox"> Remember me</label>
+            </div>
+            
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
 </body>
 
 </html>
