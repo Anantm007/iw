@@ -28,6 +28,7 @@ app.use(express.static("public"));
 
 // routes
 app.use('/', require('./routes/index'));
+app.use('/admin', require('./routes/admin/auth'));
 app.use('/blogs', require('./routes/admin/blogsroutes'));
 app.use('/', require('./routes/admin/contact'));
 
