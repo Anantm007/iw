@@ -31,16 +31,20 @@
 
 <body>
     <div style="text-align: center;">
-        <h1>Welcome to Admin Dashboard</h1>
-        
-    </div>
+        <h1>Compose Blog</h1>
+        <br>
+      </div>  
+        <form action="/admin/blogs/compose" method="POST" enctype="multipart/form-data">
+            <div class="form-group" style="margin-left: 1rem">
+                    <textarea name="title" rows="1" cols="150" required>Blog Title</textarea><br><br>
+                    <textarea name="body" rows="20" cols="150" required>Blog Body</textarea><br><br>
+                    Blog Photo<input type="file" name="image" required>
+            <div style="text-align:center"> 
+                <button type="submit" class="btn btn-primary">SUBMIT</button>
+            </div>
 
-    <ul>
-        <li><h4><a href="/admin/queries">See and resolve student queries</a></h4></li>
-        <li><h4><a href="/admin/blogs/compose">Create Blogs</a></h4></li>
-        <li><h4><a href="/admin/blogs">Edit Blogs</a></h4></li>
-        <li><h4><a href="/admin/blogs">Delete Blogs</a></h4></li>
-    </ul>
+        </form>
+
 </body>
 
 </html>

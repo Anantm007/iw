@@ -30,6 +30,18 @@ var storage = multer.diskStorage({
  
 var upload = multer({ storage: storage });
 
+// New Blog post display
+router.get('/compose', async(req, res) => {
+  sess = req.session;
+
+  if(sess.email)
+  {
+    res.render('../views/pagesadmin/composeblog');
+  }
+
+  else
+  res.redirect('/admin');
+})
 
 // Create new blog posts along with image
 router.post('/compose', upload.single("image"), async(req, res) => {
@@ -38,8 +50,9 @@ router.post('/compose', upload.single("image"), async(req, res) => {
 
   if(sess.email)
   {
+    console.log(req.body);
     const {title, body} = req.body;
-  
+    
     var img = fs.readFileSync(req.file.path);
     var encode_image = img.toString('base64');
     
@@ -62,9 +75,7 @@ router.post('/compose', upload.single("image"), async(req, res) => {
       // Saving blog to the Database
       await blog.save();
     
-      res.render('../views/pages/singleblog', {
-        'Blog': blog
-    });
+      res.redirect('/admin/blogs/compose');
   
     } catch (err) {
       console.log(err.message);
@@ -100,37 +111,35 @@ router.get('/', async(req,res) => {
 
 // Display blog to be edited
 router.get('/edit/:id', async(req, res) => {
-  //sess = req.session;
+  sess = req.session;
 
-  //if(sess.email) {
+  if(sess.email) {
     try {
       const blog = await Blogs.findById(req.params.id);
-      console.log(blog)
 
       res.render('../views/pagesadmin/editblog', {
         'Blog': blog
       });
     } catch (err) {
-      throw(err);
+      return res.json({msg:"Server Error"})
     }
-  //}
+  }
 
-  //else
+  else
   res.redirect('/admin');
 })
 
 // Edit A Blog
 router.post('/edit/:id', async(req, res) => {
-  //sess = req.session;
+  sess = req.session;
 
-  //if(sess.email) {
-    console.log(req.body);
-    const blog = await Blogs.findByIdAndUpdate({'_id': req.params.id});
+  if(sess.email) {
+    const {title, body} = req.body;
+    const blog = await Blogs.findByIdAndUpdate({'_id': req.params.id}, {$set: {title: title, body:body}});
+    return res.redirect('/admin/blogs')
+  }
 
-    res.redirect('/admin/blogs')
-  //}
-
-  //else
+  else
   res.redirect('/admin');
 })
 
