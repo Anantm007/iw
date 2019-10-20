@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Dashboard</title>
+ <!-- Plugin-CSS -->
+ <link rel="stylesheet" href="css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/owl.carousel.min.css">
+ <link rel="stylesheet" href="css/linearicons.css">
+ <link rel="stylesheet" href="css/magnific-popup.css">
+ <link rel="stylesheet" href="css/animate.css">
+ <!-- Main-Stylesheets -->
+ <link rel="stylesheet" href="css/normalize.css">
+ <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="css/responsive.css">
+ <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<% include ./includes/navbar.ejs %>
+
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>All Blogs</h1>
+        <br>
+        
+    </div>
+        <% Blogs.forEach(function (blog) { %>
+    <ul>
+        <h4>• <%= blog.title %></h4>
+        <h5><%= blog.body.substring(0,120) %> ...</h5>
+        <h5><a href="/admin/blogs/<%=blog.id%>">View Full Blog</a></h5>
+        <h5><a href="/admin/blogs/<%=blog.id%>">Edit Blog</a></h5>
+        <h5><a href="/admin/blogs/<%=blog.id%>" style="color: red;">DELETE BLOG</a></h5>
+
+    </ul>
+    <br>
+    <br>
+    <% }); %>
+</body>
+
+</html>

@@ -68,6 +68,38 @@ router.post('/', upload.single("image"), async(req, res) => {
 
 });
 
+// Get all blogs
+router.get('/blogs', async(req,res) => {
+
+  try {
+    
+       const blogs = await Blogs.find().sort({date: -1});
+
+      res.render('../views/pagesadmin/blogs', {
+      'Blogs': blogs
+  });   
+  } catch (err) {
+      res.send(err);
+  }
+
+});
+
+
+// Get a specific blog
+router.get('/blogs/:id', async(req,res) => {
+
+  try {
+   
+       const blog = await Blogs.findOne({'_id': req.params.id});
+        
+      res.render('../views/pagesadmin/singleblog', {
+        'Blog': blog
+    });   
+  } catch (err) {
+      res.send(err);
+  }
+
+});
 
 // Displaying a specific image with blog id passed as a parameter
 router.get('/photo/:id', (req, res) => {
