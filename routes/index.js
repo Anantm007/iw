@@ -101,6 +101,20 @@ router.post('/blogs/comment/:id', async(req, res) => {
   });
   
   
+// Displaying a specific image with blog id passed as a parameter
+router.get('/blogs/photo/:id', (req, res) => {
+  var filename = req.params.id;
+  
+  Blogs.findOne({'_id': filename }, (err, result) => {
+  
+      if (err) return console.log(err)
+   
+     res.contentType('image/jpeg');
+     res.send(result.image.data);     
+      
+    })
+  })
+
 
 // Team page
 router.get('/team', async(req,res) =>{
