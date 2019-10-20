@@ -30,47 +30,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
-// Get all blogs
-router.get('/', async(req,res) => {
-
-  try {
-    
-       // Fetch all blogs to get total number of blogs
-       const blogs = await Blogs.find().sort({date: -1});
-
-       // Fetch the latest blog sorted by date
-       const latest = await Blogs.findOne({}, {}, {sort: {'date': -1}});
-       
-       // Fetch all blogs except the latest one
-       blogs2 = await Blogs.find().limit(blogs.length-1);
-
-      res.render('../views/pages/blogs', {
-      'Blogs': blogs2,
-      'latest': latest
-  });   
-  } catch (err) {
-      res.send(err);
-  }
-
-});
-
-
-// Get a specific blog
-router.get('/:id', async(req,res) => {
-
-  try {
-   
-       const blog = await Blogs.findOne({'_id': req.params.id});
-        
-      res.render('../views/pages/singleblog', {
-        'Blog': blog
-    });   
-  } catch (err) {
-      res.send(err);
-  }
-
-});
-
 // Create new blog posts along with image
 router.post('/', upload.single("image"), async(req, res) => {
 
@@ -102,40 +61,6 @@ router.post('/', upload.single("image"), async(req, res) => {
       'Blog': blog
   });
 
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send("server error");
-  }
-
-});
-
-// Create new comment
-router.post('/comment/:id', async(req, res) => {
-
-  const {name, text} = req.body;  
-
-  try {
-    
-    const blog = await Blogs.findOne({'_id':req.params.id});
-
-    // Create a new comment object
-    const newComment = ({
-      name,
-      text,
-      date: Date.now()
-    });
-
-
-    blog.comments.unshift(newComment);
-
-
-    // Saving blog to the Database
-    await blog.save();
-    
-    res.render('../views/pages/singleblog', {
-      'Blog': blog
-  });
-  
   } catch (err) {
     console.log(err.message);
     res.status(500).send("server error");

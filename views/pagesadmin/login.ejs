@@ -7,17 +7,21 @@
     <title>Admin Login</title>
 </head>
 <body>
-        <form action="/admin/login" method="POST" class="form-inline" >
+        <h1 style="text-align: center;">Please login to continue</h1>
+
+        <form action="/admin/login" method="POST" class="form-inline" style="text-align: center;" >
             <div class="form-group">
               <label class="sr-only" for="email">Username:</label>
               <input type="email" class="form-control" name="username">
             </div>
+            <br>
             <div class="form-group">
               <label class="sr-only" for="pwd">Password:</label>
               <input type="password" class="form-control" name="password">
             </div>
+            <br>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-    <h1>Please login to continue</h1>
+    
 </body>
 </html>

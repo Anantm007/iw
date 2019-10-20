@@ -24,21 +24,32 @@ const config = require('config');
 const user = config.get('adminusername');
 const pass = config.get('adminpassword');
 
-// Dashboard of the admin
+// Login page of the admin
 router.get('/', async(req, res) => {
-    res.redirect('/admin/login');
+    sess = req.session;
+    if(sess.email)
+    {
+        res.redirect('/admin/dashboard');
+    }
+
+    else
+    {
+        res.redirect('/admin/login');
+    }
 });
 
 router.get('/login', async(req, res) => {
     sess = req.session;
     if(sess.email)
     {
-        return res.render('../views/pagesadmin/dashboard');
+        res.redirect('/admin/dashboard');
     }
 
     else
-    res.render('../views/pagesadmin/login');
-});
+    {
+        res.render('../views/pagesadmin/login');
+    }
+})
 
 // Logging in the admin
 router.post('/login', async(req, res) => {
@@ -49,7 +60,7 @@ router.post('/login', async(req, res) => {
     // Matching credentials
     if(username !== user || password !== pass)
     {   
-        return res.json({msg: "Invalid Credentials"});
+        res.redirect('/admin');
     }
     
     else
@@ -57,7 +68,7 @@ router.post('/login', async(req, res) => {
         sess = req.session;
         sess.email = username;
 
-        return res.render('../views/pagesadmin/dashboard');  
+        res.redirect('/admin/dashboard');  
     }
 
     } catch (err) {
@@ -65,7 +76,19 @@ router.post('/login', async(req, res) => {
     }
 });
 
-// Destroying the seesion after loggin out the admin
+// Admin dashboard
+router.get('/dashboard', async(req, res) => {
+    sess = req.session;
+    if(sess.email)
+    {
+        return res.render('../views/pagesadmin/dashboard');
+    }
+
+    else
+    res.redirect('/admin');
+})
+
+// Destroying the seesion after logging out the admin
 router.get('/logout',(req,res) => {
     req.session.destroy((err) => {
         if(err) {
