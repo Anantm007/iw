@@ -5,15 +5,15 @@ const router = express();
 var sess;
 
 // For sending emails
-const config = require('config');
+require('dotenv').config()
 const nodemailer = require("nodemailer");
 
 // Initialise mail sending
 let transporter = nodemailer.createTransport({
     service : 'Gmail',
     auth : {
-              user : config.EmailId,
-              pass : config.EmailPass
+              user : process.env.EmailId,
+              pass : process.env.EmailPass
 
     }});
 
@@ -37,7 +37,7 @@ router.post('/submitquery', async(req, res) => {
         query.save();
     
     let HelperOptions ={
-        from : config.EmailName + '<'+ config.EmailId + '>' ,
+        from : process.env.EmailName + '<'+ process.env.EmailId + '>' ,
   
             to : "iwmsit@gmail.com",
             subject : name + " has submitted a query - " + message,

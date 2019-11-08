@@ -20,9 +20,9 @@ const Blogs = require('../../models/blog');
 const Query = require('../../models/query');
 
 // Config folder
-const config = require('config');
-const user = config.get('adminusername');
-const pass = config.get('adminpassword');
+require('dotenv').config()
+const user = process.env.adminusername
+const pass = process.env.adminpassword
 
 // Login page of the admin
 router.get('/', async(req, res) => {

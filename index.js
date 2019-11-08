@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const config = require('config');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 // MongoDB url
-const url = config.get('mongoURI');
+const url = process.env.mongoURI
 
 //Connecting to the database
 mongoose.promise = global.Promise;
