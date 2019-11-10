@@ -33,14 +33,14 @@
     <div style="text-align: center;">
         <h1>All Blogs</h1>
         <br>
-        
+
     </div>
         <% Blogs.forEach(function (blog) { %>
     <ul>
         <h4>• <%= blog.title %></h4>
         <h5><%= blog.body.substring(0,120) %> ...</h5>
         <a href="/blogs/<%=blog.id%>"><button class="btn btn-primary">View</button></a>
-        <a href="/admin/blogs/edit/<%=blog.id%>"><button class="btn btn-primary">Edit</button></a>
+        <a href="/admin/blogs/edit/<%=blog.id%>"><button class="btn btn-warning">Update</button></a>
         <a href="/admin/blogs/delete/<%=blog.id%>"><button class="btn btn-danger">DELETE</button></a>
     </ul>
     <br>
