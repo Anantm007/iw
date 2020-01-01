@@ -29,8 +29,6 @@ router.post('/submitquery', async(req, res) => {
 
     const {name, phone, message, captcha} = req.body;
 
-    console.log(req.body);
-
     if (!captcha)
     {
         console.log("Please enter the captcha");
@@ -59,10 +57,8 @@ router.post('/submitquery', async(req, res) => {
   else {
       console.log("Successfull");
 
-      res.send({success: true, msg: "Thanks, your query has been submitted, we will contact you shortly"});
-      
-        // Create a new query object
-        q = new Query({
+           // Create a new query object
+           q = new Query({
             name,
             phone,
             message,
@@ -85,7 +81,9 @@ router.post('/submitquery', async(req, res) => {
 
         console.log("The message was sent");
         });
-  }
+  
+      res.send({success: true, msg: "Thanks, your query has been submitted, we will contact you shortly"});
+    }  
 
    });
 
