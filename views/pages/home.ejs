@@ -355,10 +355,7 @@
           .then(data => {
             alert(data.msg);
             if (data.success) {
-                document.querySelector('#name').value =  "";
-                document.querySelector('#phone').value = "";
-                document.querySelector('#message').value = "";
-                document.querySelector('#message').value = "";
+                location.reload();
             } 
           });
       });

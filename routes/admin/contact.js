@@ -69,8 +69,7 @@ router.post('/submitquery', async(req, res) => {
         q.save();
 
     let HelperOptions ={
-        from : process.env.EmailName + '<'+ process.env.EmailId + '>' ,
-
+            from : process.env.EmailName + '<'+ process.env.EmailId + '>' ,
             to : "iwmsit@gmail.com",
             subject : name + " has submitted a query - " + message,
             text : message + "\n\n" + name + " can be contacted at - " + phone
