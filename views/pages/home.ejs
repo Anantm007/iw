@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
     <title>MSI-T Unfiltered</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <!-- Place favicon.ico in the root directory -->
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
@@ -39,13 +41,13 @@
             <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
        </div>
         <!--SideBar End-->
-               
+
 <body data-spy="scroll" data-target=".mainmenu-area">
     <!-- Preloader-content -->
     <div class="preloader">
         <span><i class="lnr lnr-sun"></i></span>
     </div>
-    
+
     <% include ../includes/navbar.ejs %>
     <!-- MainMenu-Area-End -->
 
@@ -87,14 +89,14 @@
                                         <h4 style="color: black"><a href="/blogs">Blog</a></h4>
                                         <p>Lorem ipsum dolor sit amet, conseg sed do eiusmod temput laborelaborus ed sed do eiusmod tempo.</p>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
         </header>
         <!-- Home-Area-End -->
-    
+
         <!-- Button to Open the Modal for mobile devices-->
         <div class="mymodal">
             <div class="mymodalpc">
@@ -103,7 +105,7 @@
                         </button>
             </div>
         </div>
-    
+
             <!-- The Modal -->
             <div class="modal" id="myModal" >
                 <div class="modal-dialog">
@@ -112,14 +114,14 @@
                         <a href="https://facebook.com" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
                         <a href="https://www.instagram.com/inceptionwavemsi_msit/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
                         <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                        <a href="https://api.whatsapp.com/send?phone=919711093860&text=Hello%20dear%20how%20are%20you" 
-                            class="whatsapp"><i class="fa fa-whatsapp"></i></a>                
+                        <a href="https://api.whatsapp.com/send?phone=919711093860&text=Hello%20dear%20how%20are%20you"
+                            class="whatsapp"><i class="fa fa-whatsapp"></i></a>
                 </div>
                 </div>
             </div>
-            
+
       <!-- End Modal -->
-    
+
     <!-- About-Area -->
     <section class="section-padding" id="about_page">
         <div class="container">
@@ -139,7 +141,7 @@
         </div>
     </section>
     <!-- About-Area-End -->
-    
+
     <!-- Feature-Area -->
     <section class="feature-area section-padding-top" id="features_page">
         <div class="container">
@@ -215,13 +217,13 @@
         </div>
     </section>
     <!-- Feature-Area-End -->
-    
+
     <!--Instagram Feed-->
         <script src="https://www.powr.io/powr.js?platform=html"></script>
         <div class="powr-instagram-feed" id="a243f469_1570851733"></div>
     <!--Instagram feed end-->
 
-    
+
         <!-- Contact Us-Form -->
     <div class="subscribe-area section-padding" id="intouch"  style="background: #5e88fc;">
         <div class="container">
@@ -230,24 +232,27 @@
                     <div class="subscribe-form text-center">
                         <h3 class="blue-color">Get In Touch</h3>
                         <div class="space-20"></div>
-                        <form action="/submitquery" method="POST">
-                            <input type="text" class="control" name="name" placeholder="Your Name" required >
-                            <input type="number" class="control" name="phone" placeholder="Your 10 digit Whatsapp Number" required >
-                            <input type="text" class="control" name="message" placeholder="Your Message" required >
+                        <form id="Form">
+                            <input type="text" class="control" id="name" placeholder="Your Name" required >
+                            <input type="number" class="control" id="phone" placeholder="Your 10 digit Whatsapp Number" required >
+                            <input type="text" class="control" id="message" placeholder="Your Message" required >
+                            <br><br>
+                            <div class="g-recaptcha" data-sitekey="6LesRssUAAAAACiA0FiPiK2N53FY2eHqnZT8MWE2"></div>
+
                         <br>
                         <br>
-                        <button type="submit" class="btn btn-primary">Submit</button>                            
+                        <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-  
+
     </div>
     <!-- Contact Form End -->
 
-    
+
     <!-- Contact-Details-Area -->
     <footer class="footer-area" id="contact_page">
         <div class="section-padding">
@@ -287,7 +292,7 @@
                             <p><a href="mailto:iwsc.msi.delhi@gmail.com"  style="color: blue">iwsc.msi.delhi@gmail.com</a></p>
                         </div>
                     </div>
-                </div>             
+                </div>
             </div>
         </div>
     <!--Contact-Details-Area-End-->
@@ -306,17 +311,17 @@
                             <p><a href="mailto:anant.mathur007@gmail.com" style="color: blue">anant.mathur007@gmail.com</a></p>
                             <p> <a href="https://api.whatsapp.com/send?phone=919711093860&text=Hello%20Anant%20%3C3" style="color:blue;">+91 9711093860</a> <br> Click on the number to open Whatsapp chat </p>
 
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-    
+
         </div>
     <!--About-Developer-End-->
 
     </body>
-    
+
     <footer>
         <% include ../includes/footer.ejs %>
     </footer>
@@ -333,5 +338,28 @@
     <script src="js/wow.min.js"></script>
     <!--Main-active-JS-->
     <script src="js/main.js"></script>
+
+    <script>
+      document.getElementById('Form').addEventListener('submit', e => {
+        e.preventDefault();
+        console.log("hello")
+        const name = document.querySelector('#name').value;
+        const phone = document.querySelector('#phone').value;
+        const message = document.querySelector('#message').value;
+        const captcha = document.querySelector('#g-recaptcha-response').value;
+        return fetch('/submitquery', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({ name, phone, message, captcha })
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            alert(data.msg);
+            if (data.success) return location.reload();
+          });
+      });
+    </script>
+
 
 </html>

@@ -20,6 +20,7 @@ mongoose.set('useFindAndModify', false);
 
 // Getting data in json format
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json())
 
 // Setting express engine
 app.set('view engine', 'ejs');
