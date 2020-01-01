@@ -342,7 +342,6 @@
     <script>
       document.getElementById('Form').addEventListener('submit', e => {
         e.preventDefault();
-        console.log("hello")
         const name = document.querySelector('#name').value;
         const phone = document.querySelector('#phone').value;
         const message = document.querySelector('#message').value;
@@ -354,9 +353,13 @@
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data);
             alert(data.msg);
-            if (data.success) return location.reload();
+            if (data.success) {
+                document.querySelector('#name').value =  "";
+                document.querySelector('#phone').value = "";
+                document.querySelector('#message').value = "";
+                document.querySelector('#message').value = "";
+            } 
           });
       });
     </script>
