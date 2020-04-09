@@ -23,10 +23,15 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/gallery.css">
+
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".mainmenu-area">
+
+
     <!-- Preloader-content -->
     <div class="preloader">
         <span><i class="lnr lnr-sun"></i></span>
@@ -48,12 +53,56 @@
             </div>
         </div>
     </header>
-    
+
     <div class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 style="text-align: center;color: black;">Explore the Campus</h1>
+                      <div class="container tz-gallery">
+                          <div class="row">
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="/images/explore/1.jpg">
+                                    <img src="./images/explore/1.jpg" style="height: 280px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="/images/explore/2.jpg">
+                                    <img src="./images/explore/2.jpg" style="height: 280px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="/images/explore/3.jpg">
+                                    <img src="./images/explore/3.jpg" style="height: 280px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="/images/explore/4.jpg">
+                                    <img src="./images/explore/4.jpg" style="height: 280px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="/images/explore/7.jpg">
+                                    <img src="./images/explore/7.jpg" style="height: 280px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <a class="lightbox" href="/images/explore/6.jpg">
+                                    <img src="./images/explore/6.jpg" style="height: 280px;">
+                                </a>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <a class="lightbox" href="/images/explore/5.jpg">
+                                    <img src="./images/explore/5.jpg">
+                                </a>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <a class="lightbox" href="/images/explore/8.jpg">
+                                    <img src="./images/explore/8.jpg">
+                                </a>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -62,7 +111,10 @@
     <footer>
             <% include ../includes/footer.ejs %>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>
     <!--Vendor-JS-->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/vendor/jquery-ui.js"></script>
