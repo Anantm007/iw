@@ -22,9 +22,9 @@ router.get('/events', async(req,res) =>{
 });
 
 // College Updates page
-router.get('/updates', async(req,res) =>{
-    return res.render("../views/pages/updates");
-});
+// router.get('/updates', async(req,res) =>{
+//     return res.render("../views/pages/updates");
+// });
 
 
 // Get all blogs
