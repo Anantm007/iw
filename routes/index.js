@@ -21,6 +21,11 @@ router.get('/events', async(req,res) =>{
     return res.render("../views/pages/events");
 });
 
+// Societies page
+router.get('/society', async(req,res) =>{
+  return res.render("../views/pages/societies");
+});
+
 // Contact Us Page
 router.get('/contact', async(req,res) =>{
     return res.render("../views/pages/contactUs");
