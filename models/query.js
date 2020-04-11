@@ -7,6 +7,11 @@ const QuerySchema = new Schema ({
         required: true
     },
 
+    personName: {
+        type: String,
+        required: true
+    },
+
     phone: {
         type: Number,
         required: true
