@@ -27,35 +27,34 @@ const Query = require('../../models/query.js');
 // Post route to submit
 router.post('/submitquery', async(req, res) => {
 
-    const {name, phone, message, captcha} = req.body;
+    const {name, phone, message} = req.body;
 
-    if (!captcha)
-    {
-        console.log("Please enter the captcha");
-        return res.send({success: false, msg: "Please fill out the captcha"});
-    }
+//     if (!captcha)
+//     {
+//         console.log("Please enter the captcha");
+//         return res.send({success: false, msg: "Please fill out the captcha"});
+//     }
 
-  // Verify URL
-  const query = stringify({
-    secret: process.env.captchaSecretKey,
-    response: captcha,
-    remoteip: req.connection.remoteAddress
-  });
+//   // Verify URL
+//   const query = stringify({
+//     secret: process.env.captchaSecretKey,
+//     response: captcha,
+//     remoteip: req.connection.remoteAddress
+//   });
 
-  const verifyURL = `https://google.com/recaptcha/api/siteverify?${query}`;
+//   const verifyURL = `https://google.com/recaptcha/api/siteverify?${query}`;
 
-  // Make a request to verifyURL
-  const body = await fetch(verifyURL).then(res => res.json());
+//   // Make a request to verifyURL
+//   const body = await fetch(verifyURL).then(res => res.json());
 
-  // If not successful
-  if (body.success !== undefined && !body.success)
-  {
-      console.log("error")
-      return res.send({success: false, msg: "Sorry, there was an error, please try again"});
-  }
+//   // If not successful
+//   if (body.success !== undefined && !body.success)
+//   {
+//       console.log("error")
+//       return res.send({success: false, msg: "Sorry, there was an error, please try again"});
+//   }
   // If successful
-  else {
-      console.log("Successfull");
+//   else {
 
            // Create a new query object
            q = new Query({
@@ -80,9 +79,9 @@ router.post('/submitquery', async(req, res) => {
 
         console.log("The message was sent");
         });
-  
-      res.send({success: true, msg: "Thanks, your query has been submitted, we will contact you shortly"});
-    }  
+        res.render('../views/pages/successQuery')
+    //   res.send({success: true, msg: "Thanks, your query has been submitted, we will contact you shortly"});
+    // }  
 
    });
 

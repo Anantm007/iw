@@ -21,10 +21,10 @@ router.get('/events', async(req,res) =>{
     return res.render("../views/pages/events");
 });
 
-// College Updates page
-// router.get('/updates', async(req,res) =>{
-//     return res.render("../views/pages/updates");
-// });
+// Contact Us Page
+router.get('/contact', async(req,res) =>{
+    return res.render("../views/pages/contactUs");
+});
 
 
 // Get all blogs

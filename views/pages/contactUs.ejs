@@ -1,0 +1,150 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Anant Mathur">
+    <meta name="description" content="">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Contact | MSI-T Unfiltered</title>
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+    <!-- Plugin-CSS -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/linearicons.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/animate.css">
+    Main-Stylesheets -->
+    <!-- <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/gallery.css"> -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".mainmenu-area">
+
+
+    <!-- Preloader-content -->
+    <div class="preloader">
+        <span><i class="lnr lnr-sun"></i></span>
+    </div>
+    <% include ../includes/navbar.ejs %>
+    <!-- MainMenu-Area-End -->
+
+<body data-spy="scroll" data-target=".mainmenu-area">
+    <!-- Preloader-content -->
+    <div class="preloader">
+        <span><i class="lnr lnr-sun"></i></span>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1 class="white-color">Contact Us</h1>
+                    <p> We would love to work with you. <br/>
+                        Want a media sponsor? Or a collaboration for events? We are there! 
+    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br/><br/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <form action="/submitquery" method="POST">
+                            <h3 class="text-center" style="color: black;">CONTACT FORM</h3>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="number">Phone Number</label>
+                                <input type="number" class="form-control" name="phone" aria-describedby="emailHelp" placeholder="Your 10 digit mobile number" required>
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your phone number</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" name="message" rows="6" required></textarea>
+                            </div>
+                            <div class="mx-auto text-center">
+                            <button type="submit" class="btn btn-primary text-right">Submit</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="col-12 col-sm-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header bg-success text-white text-uppercase text-center">Reach Out to us</div>
+                    <div class="card-body">
+                        <p>C-4 MARKET, Janakpuri</p>
+                        <p>New Delhi, Delhi 110058</p>
+                        <p>Email :<a href="mailto:iwsc.msi.delhi@gmail.com"  style="color: blue">iwsc.msi.delhi@gmail.com</a></p>
+                        <p>Click <a href="https://api.whatsapp.com/send?phone=919711093860&text=Hello%20dear%20how%20are%20you" style="color:blue;"> here</a> to open Whatsapp Chat </p>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-lg-4 col-xl-3">
+                    <h5>About</h5>
+                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                    <p class="mb-0">
+                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                    </p>
+                </div>
+    
+            </div>
+        </div>
+    </footer>
+
+
+    <footer>
+            <% include ../includes/footer.ejs %>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>
+    <!--Vendor-JS-->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/vendor/jquery-ui.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <!--Plugin-JS-->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/ajaxchimp.js"></script>
+    <script src="js/scrollUp.min.js"></script>
+    <script src="js/magnific-popup.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <!--Main-active-JS-->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
