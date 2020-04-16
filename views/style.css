@@ -127,12 +127,6 @@ body {
     float:right;    
   }
 
-  .mymodalpc {
-   /* position: fixed;
-    top: 50%;
-    left: 80%; */
-  }
-  
   @media screen and (min-width: 600px) {
   .mymodal {
         visibility: hidden;

@@ -163,7 +163,7 @@
         opacity: 0.9;
     }
     .mainmenu-area .navbar-toggle {
-        border: 1px solid #ffffff;
+        /* border: 1px solid #ffffff; */
         border-radius: 1px;
     }
     .mainmenu-area .navbar-toggle .icon-bar {
