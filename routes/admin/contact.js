@@ -2,9 +2,6 @@
 
 const express =  require('express');
 const router = express();
-const { stringify } = require('querystring');
-const request = require("request");
-const fetch = require('node-fetch');
 
 var sess;
 
