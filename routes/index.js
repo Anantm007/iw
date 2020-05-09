@@ -1,10 +1,8 @@
 const express =  require('express');
 const router = express();
-const request = require("request");
 
 // Models
 const Blogs = require('../models/blog');
-const Post = require('../models/post');
 
 
 // Home page
@@ -127,35 +125,5 @@ router.get('/team', async(req,res) =>{
     return res.render("../views/pages/team");
 });
 
-
-// Instagram Posts
-router.get('/instaPosts', async(req, res) => {
-  
-  request(`http://adityarajput.me/ig/username/?username=prakriti_msit`, { json: true }, async(err,response, body) => {
-    var n = response.body.post.length;
-
-    try { 
-      for(var i = 0; i < n; i++)
-      {
-        var post = new Post({
-          url:response.body.post[i].url,
-          image:response.body.post[i].image,
-          likes:response.body.post[i].likes,
-          comments:response.body.post[i].comments,
-          text:response.body.post[i].text
-        })
-
-        await post.save();
-      } 
-    } catch (err) {
-      throw err;
-    }
-
-    return res.json({
-      success: true,
-      message: "Saved to DB"
-    })
-  });
-})
 
 module.exports = router;
