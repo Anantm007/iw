@@ -7,7 +7,7 @@ module.exports = instaPosts = async() => {
   // Empty the DB before adding more
   await Post.deleteMany();
   
-  request(`http://adityarajput.me/ig/username/?username=prakriti_msit`, { json: true }, async(err,response, body) => {
+  request(`http://adityarajput.me/ig/username/?username=inceptionwavemsi_msit`, { json: true }, async(err,response, body) => {
     var n = response.body.post.length;
 
     try { 
