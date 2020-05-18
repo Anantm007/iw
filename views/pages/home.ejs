@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/instaStyle.css">
+    <script src="../js/vendor/script.js"></script>
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
@@ -212,11 +214,20 @@
     <!-- Feature-Area-End -->
 
     <!--Instagram Feed-->
-    <h2 class="text-center">Our Instagram Feed</h2>
-        <script src="https://www.powr.io/powr.js?platform=html"></script>
-        <div class="powr-instagram-feed" id="a243f469_1570851733"></div>
+    <h2 class="text-center">Our Instagram Feed</h2>    
+    <section class="vintalight" id="vintalight">
+        <%  posts.forEach(function(post) { %>
+          <a href=<%=post.url%> target="_blank">
+            <figure class="vintalight__container" style="margin: 2rem;">
+              <div class="vintalight__photo"><img class="vintalight__img" src=<%=post.image%> alt="img"></div>
+              <figcaption class="vintalight__caption">
+                <h3 class="vintalight__text" style="margin-top: 2.5rem; padding: 1rem"><%=post.text.substring(0,30)%>...</h3>
+              </figcaption>
+            </figure>
+        </a>        
+        <%  }); %>
+      </section>
     <!--Instagram feed end-->
-
 
 
     <!-- About-Developer -->

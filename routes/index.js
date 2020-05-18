@@ -3,11 +3,15 @@ const router = express();
 
 // Models
 const Blogs = require('../models/blog');
-
+const Posts = require('../models/post');
 
 // Home page
 router.get('/', async(req,res) =>{
-    return res.render("../views/pages/home");
+  // 6 insta posts
+  const posts = await Posts.find().sort({date: -1}).limit(6);
+  return res.render("../views/pages/home", {
+    posts: posts
+  });
 });
 
 // Explore Campus page
@@ -31,9 +35,13 @@ router.get('/contact', async(req,res) =>{
 });
 
 
+// Team page
+router.get('/team', async(req,res) =>{
+  return res.render("../views/pages/team");
+});
+
 // Get all blogs
 router.get('/blogs', async(req,res) => {
-
     try {
       
          // Fetch all blogs to get total number of blogs
@@ -118,12 +126,5 @@ router.get('/blogs/photo/:id', (req, res) => {
       
     })
   })
-
-
-// Team page
-router.get('/team', async(req,res) =>{
-    return res.render("../views/pages/team");
-});
-
 
 module.exports = router;
