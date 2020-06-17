@@ -112,25 +112,23 @@
 
         <!-- Button to Open the Modal for mobile devices-->
         <div class="mymodal">
-            <div class="mymodalpc">
-                    <button type="button" class="btn btn-primary modalbutton" data-toggle="modal" data-target="#myModal" >
-                            ...
-                        </button>
-            </div>
+            <button type="button" class="btn btn-primary modalbutton" data-toggle="modal" data-target="#myModal">
+                ...
+            </button>
         </div>
 
-            <!-- The Modal -->
-            <div class="modal" id="myModal" >
-                <div class="modal-dialog">
-                <br><br><br>
-                <div class="modal-content" style="background-color: transparent">
-                        <a href="https://www.instagram.com/inceptionwavemsi_msit/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://api.whatsapp.com/send?phone=919711093860&text=Hello%20dear%20how%20are%20you"
-                            class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-                </div>
+        <!-- The Modal -->
+        <div class="modal" id="myModal" >
+            <div class="modal-dialog" role="document">
+            <br><br><br>
+            <div class="modal-body">
+                    <a href="https://www.instagram.com/inceptionwavemsi_msit/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=919711093860&text=Hello%20dear%20how%20are%20you"
+                        class="whatsapp"><i class="fab fa-whatsapp"></i></a>
             </div>
+            </div>
+        </div>
 
       <!-- End Modal -->
 
@@ -214,19 +212,23 @@
     <!-- Feature-Area-End -->
 
     <!--Instagram Feed-->
-    <h2 class="text-center">Our Instagram Feed</h2>    
+    <!-- <h2 class="text-center">Our Instagram Feed</h2>    
     <section class="vintalight" id="vintalight">
         <%  posts.forEach(function(post) { %>
           <a href=<%=post.url%> target="_blank">
             <figure class="vintalight__container" style="margin: 2rem;">
-              <div class="vintalight__photo"><img class="vintalight__img" src=<%=post.image%> alt="img"></div>
+              <div class="vintalight__photo"><img class="vintalight__img" src= <%=post.image%> alt="img"></div>
               <figcaption class="vintalight__caption">
                 <h3 class="vintalight__text" style="margin-top: 2.5rem; padding: 1rem">❤️ <%=post.likes%></h3>
               </figcaption>
             </figure>
         </a>        
         <%  }); %>
-      </section>
+      </section> -->
+        <h2 class="text-center">Our Instagram Feed</h2>    
+      <script src="https://www.powr.io/powr.js?platform=html"></script>
+      <div class="powr-instagram-feed" id="a243f469_1570851733"></div>
+
     <!--Instagram feed end-->
 
 
