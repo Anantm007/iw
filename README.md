@@ -8,7 +8,7 @@ Official website of MSI-T Unfiltered under Inception Wave.
 1. Clone the repo
 2. cd iw
 3. npm install
-4. paste the .env file in the root folder
+4. paste the .env file in the root
 5. npm run dev
 6. Open the project on http://localhost:3000
 ```
@@ -18,4 +18,5 @@ Official website of MSI-T Unfiltered under Inception Wave.
 - Node.js
 - Express.js
 - MongoDB
+- EJS engine (frontend)
 - Dependencies - body-parser, config, dotenv, ejs, express, express-session, fs, mongoose, multer, node-cron, nodemailer, request, uuid, morgan
